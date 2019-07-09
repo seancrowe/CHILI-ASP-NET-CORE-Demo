@@ -1,0 +1,47 @@
+﻿<h4 style="color:dodgerblue">Order Placed</h4>
+
+<p id="js-message">
+    Your Orders Is Being Processed... Please Wait <img src="~/images/Loading_icon.gif">
+</p>
+<br/>
+<a href="/storefront/index">Want to make another?</a>
+
+<script type="text/javascript">
+
+        let data = { "startOrder" : "true" };
+
+        let xmlreq = new XMLHttpRequest();
+
+        xmlreq.open("POST", "/Orders/NewOrder");
+        xmlreq.setRequestHeader('Content-Type', 'application/json');
+        xmlreq.send("startOrder");
+
+        xmlreq.onload = function()
+        {
+            let response = xmlreq.responseText;
+            let status = xmlreq.status;
+
+            try {
+                let results = JSON.parse(response);
+                console.log(results);
+
+
+                if (results['success'] == "true") {
+                    document.getElementById("js-message").innerText = "Completed! Download you file here:"
+
+                    let link = document.createElement("a");
+                    link.innerText = "DOWNLOAD PDF";
+                    link.setAttribute("href", results["url"]);
+
+                    document.getElementById("js-message").appendChild(link);
+                }
+                else
+                {
+                    document.getElementById("js-message").innerText = "There was an error. Please contact support.";
+                }
+
+            } catch(e) {
+                document.getElementById("js-message").innerText = "There was an error. Please contact support.";
+            }
+        };
+    </script>

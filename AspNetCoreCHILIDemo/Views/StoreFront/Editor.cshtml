@@ -1,0 +1,25 @@
+﻿<div id="toolbar" style="height:30px">
+    <button id="js-order">Order PDF</button>
+    <button id="js-save">Save Order</button>
+    <input id="js-zoomValue" type="text" /><button id="js-setZoom">Set Zoom</button>
+    <button id="js-zindexUp">Bring Forward</button>
+    <button id="js-zindexDown">Push Backward</button>
+</div>
+<iframe id="editor-iframe" style="width:100%; height:650px" src="@ViewBag.editorUrl">
+
+</iframe>
+<div>
+    Header: <input id="js-header" type="text"/><br/>
+    Sub-Header: <input id="js-subheader" type="text" /><br/>
+    <button id="js-updateVariables">Update</button>
+</div>
+
+
+<script type="text/javascript" src="~/scripts/chiliInterface.js"></script>
+<script type="text/javascript">
+
+    document.getElementById("js-order").addEventListener('click', function () {
+        window.location.replace("/storefront/order");
+    });
+
+</script>

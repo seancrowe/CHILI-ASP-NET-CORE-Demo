@@ -1,0 +1,15 @@
+﻿<p>This is the CHILI Demo Store</p>
+
+<form action="/home/login" method="post">
+
+    @if (ViewBag.showMessage == true)
+    {
+        <p style="color:red">@ViewBag.message</p>
+    }
+
+    <label for="username">Your Username: </label>
+    <input type="text" name="username"/> <br/><br/>
+    <label for="password">Your Password: </label>
+    <input type="password" name="password"/><br/><br/>
+    <input type="submit" value="Login"/>
+</form>

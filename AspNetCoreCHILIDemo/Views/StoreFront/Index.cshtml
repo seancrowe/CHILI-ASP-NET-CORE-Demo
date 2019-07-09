@@ -1,0 +1,40 @@
+﻿@using AspNetCoreCHILIDemo.Objects
+
+<table>
+
+    @if (ViewBag.templates != null)
+    {
+   
+
+        for (int i = 0; i < ViewBag.templateCount; i++)
+        {
+            ChiliResource template = ViewBag.templates[i];
+
+            if (i == 0)
+            {
+
+                Html.Raw("<tr>");
+            }
+            else
+            {
+                if (i % 5 == 0)
+                {
+                    Html.Raw("</tr><tr>");
+                }
+            }
+            <th>
+                <h4>@template.name</h4>
+                <a href="/storefront/edit?id=@template.id">
+                    <img src="@template.previewUrl" />
+                </a>
+            </th>
+
+            if (i == (ViewBag.templateCount - 1))
+            {
+                Html.Raw("</tr>");
+            }
+        }
+    }
+
+</table>
+

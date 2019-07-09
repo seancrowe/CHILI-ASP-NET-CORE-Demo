@@ -1,0 +1,11 @@
+﻿
+@if (ViewBag.error == true)
+{
+    <h4 style="color:red">@ViewBag.message</h4>
+}
+else
+{ 
+    <h3>Please choose your destination:</h3>
+    <a href="/storefront" style="font-size:30pt">Store Front</a><br/><br/>
+    <a href="/storemanager" style="font-size:30pt">Store Manager</a>
+}
